@@ -1,0 +1,41 @@
+{
+  "test_mode": true,
+  "provider": "fireflies",
+  "event_id": "ff-demo-001",
+  "title": "Website launch readiness",
+  "participants": [
+    { "name": "Maya", "email": "maya@example.com" },
+    { "name": "Leo", "email": "leo@example.com" }
+  ],
+  "transcript": {
+    "sentences": [
+      { "speaker_name": "Maya", "text": "The launch stays on Friday if the regression suite passes by Thursday afternoon." },
+      { "speaker_name": "Leo", "text": "I will finish the checkout regression tests by Thursday at 3 PM and post the report." },
+      { "speaker_name": "Maya", "text": "I will send the final launch message to support before Friday at 9 AM." }
+    ]
+  },
+  "config": {
+    "llm_provider": "openai",
+    "task_system": "airtable",
+    "notification_system": "slack"
+  },
+  "mock_summary": {
+    "summary": "The team kept the Friday launch target, conditional on checkout regression testing passing by Thursday afternoon.",
+    "key_points": [
+      "Friday remains the target launch date.",
+      "Checkout regression results are the release gate."
+    ],
+    "decisions": ["Use the regression report as the go/no-go gate."],
+    "risks": ["A failed or late regression run will delay launch."],
+    "action_items": [
+      { "title": "Complete checkout regression tests", "owner": "leo@example.com", "due_date": "2026-10-01", "priority": "high", "description": "Run the checkout regression suite and publish the report." },
+      { "title": "Send final launch message to support", "owner": "maya@example.com", "due_date": "2026-10-02", "priority": "medium", "description": "Send the approved launch notice before 09:00." }
+    ]
+  },
+  "expected": {
+    "action_item_count": 2,
+    "task_system": "airtable",
+    "notification_system": "slack"
+  }
+}
+

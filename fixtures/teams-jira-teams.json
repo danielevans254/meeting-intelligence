@@ -1,0 +1,34 @@
+{
+  "test_mode": true,
+  "provider": "teams",
+  "event_id": "teams-demo-001",
+  "subject": "Customer escalation review",
+  "attendees": [
+    { "displayName": "Priya", "mail": "priya@example.com" },
+    { "displayName": "Jon", "mail": "jon@example.com" }
+  ],
+  "segments": [
+    { "speaker": "Priya", "text": "We confirmed the export timeout is the cause of the escalation." },
+    { "speaker": "Jon", "text": "I will prepare a hotfix and ask QA for verification tomorrow." }
+  ],
+  "config": {
+    "llm_provider": "anthropic",
+    "task_system": "jira",
+    "notification_system": "teams"
+  },
+  "mock_summary": {
+    "summary": "The export timeout was confirmed as the escalation cause and a hotfix will be prepared for QA.",
+    "key_points": ["Export requests time out under the customer's data volume."],
+    "decisions": ["Prepare a hotfix before pursuing a larger export redesign."],
+    "risks": ["The hotfix needs regression testing against large exports."],
+    "action_items": [
+      { "title": "Prepare export-timeout hotfix", "owner": "jon@example.com", "due_date": "2026-09-29", "priority": "high", "description": "Implement the timeout hotfix and request QA verification." }
+    ]
+  },
+  "expected": {
+    "action_item_count": 1,
+    "task_system": "jira",
+    "notification_system": "teams"
+  }
+}
+
